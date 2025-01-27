@@ -1,0 +1,110 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title mb-0">Insertar Nuevo Usuario</h3>
+        </div>
+        <div class="card-body">
+          <!-- Mensaje de error -->
+          <div *ngIf="error" class="alert alert-danger">
+            {{error}}
+          </div>
+
+          <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+            <!-- Nombre -->
+            <div class="mb-3">
+              <label for="nombreusuario" class="form-label">Nombre completo*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombreusuario"
+                formControlName="nombreusuario"
+                [class.is-invalid]="submitAttempt && f['nombreusuario'].errors"
+              >
+              <div class="invalid-feedback" *ngIf="submitAttempt && f['nombreusuario'].errors">
+                {{getErrorMessage('nombreusuario')}}
+              </div>
+            </div>
+
+            <!-- Cédula -->
+            <div class="mb-3">
+              <label for="cedulausuario" class="form-label">Cédula*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cedulausuario"
+                formControlName="cedulausuario"
+                [class.is-invalid]="submitAttempt && f['cedulausuario'].errors"
+              >
+              <div class="invalid-feedback" *ngIf="submitAttempt && f['cedulausuario'].errors">
+                {{getErrorMessage('cedulausuario')}}
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="mb-3">
+              <label for="telefonousuario" class="form-label">Teléfono*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="telefonousuario"
+                formControlName="telefonousuario"
+                [class.is-invalid]="submitAttempt && f['telefonousuario'].errors"
+              >
+              <div class="invalid-feedback" *ngIf="submitAttempt && f['telefonousuario'].errors">
+                {{getErrorMessage('telefonousuario')}}
+              </div>
+            </div>
+
+            <!-- Dirección -->
+            <div class="mb-3">
+              <label for="direccionusuario" class="form-label">Dirección*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="direccionusuario"
+                formControlName="direccionusuario"
+                [class.is-invalid]="submitAttempt && f['direccionusuario'].errors"
+              >
+              <div class="invalid-feedback" *ngIf="submitAttempt && f['direccionusuario'].errors">
+                {{getErrorMessage('direccionusuario')}}
+              </div>
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-3">
+              <label for="correousuario" class="form-label">Correo electrónico*</label>
+              <input
+                type="email"
+                class="form-control"
+                id="correousuario"
+                formControlName="correousuario"
+                [class.is-invalid]="submitAttempt && f['correousuario'].errors"
+              >
+              <div class="invalid-feedback" *ngIf="submitAttempt && f['correousuario'].errors">
+                {{getErrorMessage('correousuario')}}
+              </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-secondary" (click)="cancelar()">
+                Cancelar
+              </button>
+              <div>
+                <button type="button" class="btn btn-outline-secondary me-2" (click)="resetForm()">
+                  Limpiar
+                </button>
+                <button type="submit" class="btn btn-primary" [disabled]="loading">
+                  <span class="spinner-border spinner-border-sm me-1" *ngIf="loading"></span>
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
